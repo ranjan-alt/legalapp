@@ -6,9 +6,13 @@ const cors = require("cors");
 const app = express();
 app.use(express.json());
 
-const secretKey = "ranjansah";
+const secretKey = "admin";
 const users = [
-  { id: 1, username: 'admin', password: '$2a$10$dtBO3GsYvIz5Btv7I6SE4eK4w38u/Yy9FG1Qh9fr9eWV2sPHVQPOe' } // hashed password for 'admin'
+  {
+    id: 1,
+    username: "admin",
+    password: "admin",
+  }, // hashed password for 'admin'
 ];
 
 // Enable CORS
@@ -32,7 +36,11 @@ app.post("/api/login", (req, res) => {
     }
 
     // Generate JWT token
-    const token = jwt.sign({ id: user.id, username: user.username }, secretKey, { expiresIn: "1h" });
+    const token = jwt.sign(
+      { id: user.id, username: user.username },
+      secretKey,
+      { expiresIn: "1h" }
+    );
 
     res.json({ token });
   });
