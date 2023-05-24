@@ -4,13 +4,16 @@ const bcrypt = require("bcryptjs")
 const cors = require("cors")
 const app = express()
 app.use(express.json())
-app.use(cors())
+
 
 
 const secretKey = "ranjansah";
 const users = [
     { id: 1, username: 'admin', password: '$2a$10$dtBO3GsYvIz5Btv7I6SE4eK4w38u/Yy9FG1Qh9fr9eWV2sPHVQPOe' } // hashed password for 'admin'
   ];
+
+  //Enable cors
+  app.use(cors())
 
 //Login endpoint
 app.post("/api/login",cors(), (req,res)=>{
