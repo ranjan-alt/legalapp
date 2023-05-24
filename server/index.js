@@ -31,7 +31,7 @@ app.post("/api/login", (req, res) => {
 
   // Compare the password using bcrypt
   bcrypt.compare(password, user.password, (err, isMatch) => {
-    if (err || !isMatch) {
+    if (err || isMatch) {
       return res.status(401).json({ error: "Invalid username or password" });
     }
 
