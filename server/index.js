@@ -13,7 +13,7 @@ const users = [
   ];
 
 //Login endpoint
-app.post("/api/login", (req,res)=>{
+app.post("/api/login",cors(), (req,res)=>{
     const {username, password} = req.body
 
 
