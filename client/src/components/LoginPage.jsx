@@ -15,8 +15,18 @@ const Login =({onlogin})=>{
         setPassword(e.target.value)
     }
 
-    const handleSubmit = async (e)=>{
-        e.preventDefault()
+    const apiClient = axios.create({
+        baseURL: "http://localhost:5000", // Replace with your server URL
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*", // Allow requests from all origins
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE", // Allow specific HTTP methods
+        },
+      });
+
+
+    const handleSubmit = async (username,password)=>{
+        // e.preventDefault()
 
         // if(username ==="admin" && password ==="admin"){
         //     onlogin()
@@ -27,7 +37,7 @@ const Login =({onlogin})=>{
 
         // send login request to server
         try{
-            const response = await axios.post("/api/login", {username,password});
+            const response = await apiClient.post("/api/login", {username,password});
             const token = response.data.token
 
             //store the token in local storage or any other cure storage
