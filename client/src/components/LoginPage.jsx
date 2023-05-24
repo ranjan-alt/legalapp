@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import axios from "axios";
 
 const Login =({onlogin})=>{
     const[username, setUsername] = useState("")
@@ -15,13 +15,26 @@ const Login =({onlogin})=>{
         setPassword(e.target.value)
     }
 
-    const handleSubmit =(e)=>{
+    const handleSubmit = async (e)=>{
         e.preventDefault()
 
-        if(username ==="admin" && password ==="admin"){
-            onlogin()
-        }else{
-            setLoginError(true)
+        // if(username ==="admin" && password ==="admin"){
+        //     onlogin()
+        // }else{
+        //     setLoginError(true)
+        // }
+
+
+        // send login request to server
+        try{
+            const response = await axios.post("/api/login", {username,password});
+            const token = response.data.token
+
+            //store the token in local storage or any other cure storage
+
+            localStorage.setItem("token", token)
+        }catch(error){
+            console.log(error)
         }
     }
     return(
