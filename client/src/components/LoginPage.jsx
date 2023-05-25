@@ -14,37 +14,35 @@ const Login = ({ onlogin }) => {
     setPassword(e.target.value);
   };
 
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
+  //   const handleSubmit = async (e) => {
+  //     e.preventDefault();
 
-//     try {
-//       const response = await axios.post(
-//         "http://localhost:5000/api/login",
-//         { username, password },
-//         {
-//           headers: {
-//             "Content-Type": "application/json",
-//             "Access-Control-Allow-Origin": "*", // Allow requests from all origins
-//             "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE", // Allow specific HTTP methods
-//           },
-//         }
-//       );
+  //     try {
+  //       const response = await axios.post(
+  //         "http://localhost:5000/api/login",
+  //         { username, password },
+  //         {
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //             "Access-Control-Allow-Origin": "*", // Allow requests from all origins
+  //             "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE", // Allow specific HTTP methods
+  //           },
+  //         }
+  //       );
 
-//       const token = response.data.token;
+  //       const token = response.data.token;
 
-//       localStorage.setItem("token", token);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
+  //       localStorage.setItem("token", token);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
 
-
-
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
-      const response = await fetch("http://localhost:5000/api/login", {
+      const response = await fetch("http://localhost:5000/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -53,11 +51,11 @@ const handleSubmit = async (e) => {
         },
         body: JSON.stringify({ username, password }),
       });
-  
+
       if (response.ok) {
         const data = await response.json();
         const token = data.token;
-  
+
         localStorage.setItem("token", token);
       } else {
         throw new Error("Login failed");
@@ -66,18 +64,14 @@ const handleSubmit = async (e) => {
       console.log(error);
     }
   };
-  
+
   return (
     <>
       <h1>Login page</h1>
       <form action="" onSubmit={handleSubmit}>
         <div>
           <label>Username</label>
-          <input
-            type="text"
-            value={username}
-            onChange={handleUsernameChange}
-          />
+          <input type="text" value={username} onChange={handleUsernameChange} />
         </div>
         <div>
           <label htmlFor="">Password</label>
