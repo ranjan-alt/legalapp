@@ -1,3 +1,43 @@
+.loginformpage {
+  background-color: #f8f8fb;
+  height: 100vh;
+}
+.formstyleloginpage {
+  background-color: #ffff;
+  border: 1px solid #f9f9fb;
+  width: 30%;
+  margin: 0 auto;
+  position: relative;
+  top: 30%;
+  bottom: 50%;
+  height: 40vh;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.username {
+  padding: 20px;
+}
+.password {
+  padding: 20px;
+}
+
+input,
+textarea {
+  background-color: #f8f8fb;
+  outline: none;
+  border: 1px solid #dcddf3;
+  width: 45%;
+  margin-top: 10%;
+}
+
+.loginformsubmitbutton {
+  background-color: rgb(23, 22, 69);
+  color: #ffff;
+  width: 40%;
+  padding: 10px;
+  position: relative;
+  bottom: 20px;
+  margin-top: 10%;
+}
 .main {
   background-color: #1d2537;
   height: 100vh;

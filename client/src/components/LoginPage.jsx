@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { Col, Row, Container } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Col, Row, Container } from "react-bootstrap";
 
 const Login = ({ onlogin }) => {
   const navigate = useNavigate();
@@ -71,30 +72,39 @@ const Login = ({ onlogin }) => {
 
   return (
     <>
-      <Container>
-        <Row>
-          <Col>
-            <h1>Login page</h1>
-            <form action="" onSubmit={handleSubmit}>
-              <div className="">
-                <label>Username</label>
-                <input
-                  type="text"
-                  value={username}
-                  onChange={handleUsernameChange}
-                />
-              </div>
-              <div>
-                <label htmlFor="">Password</label>
-                <input
-                  type="password"
-                  value={password}
-                  onChange={handlePasswordChange}
-                />
-              </div>
-              <button type="submit">Submit</button>
-              {loginError && <p>Invalid username or password</p>}
-            </form>
+      <Container fluid className="loginformpage">
+        <Row className="justify-content-center">
+          <Col xs={6} className="text-center" style={{ flexGrow: 1 }}>
+            <div className="formstyleloginpage">
+              <h1 style={{ marginBottom: "20px" }}>Log in</h1>
+              <form action="" onSubmit={handleSubmit}>
+                <div className="username">
+                  {/* <label className="p-3">Username</label> */}
+                  <input
+                    type="text"
+                    value={username}
+                    onChange={handleUsernameChange}
+                    placeholder="Enter your username"
+                  />
+                </div>
+                <div className="password">
+                  {/* <label htmlFor="" className="p-3">
+                    Password
+                  </label> */}
+                  <input
+                    style={{ color: "F8F8FB" }}
+                    type="password"
+                    value={password}
+                    onChange={handlePasswordChange}
+                    placeholder="Enter Your Password"
+                  />
+                </div>
+                <button type="submit" className="loginformsubmitbutton">
+                  Submit
+                </button>
+                {loginError && <p>Invalid username or password</p>}
+              </form>
+            </div>
           </Col>
         </Row>
       </Container>
