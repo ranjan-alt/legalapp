@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import Logout from "./Logout";
 
 const AdminPanel = () => {
   const [text, setText] = useState("");
@@ -49,6 +50,7 @@ const AdminPanel = () => {
         </div>
         <button type="submit">Submit</button>
       </form>
+      <Logout />
     </>
   );
 };

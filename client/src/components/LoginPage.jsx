@@ -1,7 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ onlogin }) => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState(false);
@@ -57,6 +59,7 @@ const Login = ({ onlogin }) => {
         const token = data.token;
 
         localStorage.setItem("token", token);
+        navigate("/protected");
       } else {
         throw new Error("Login failed");
       }

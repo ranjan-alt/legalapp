@@ -26,38 +26,6 @@ function App() {
     <div>
       <h1>Welcome</h1>
       <Routes>
-        {/*        
-        <Route
-          path="/login"
-          element={
-            isAuthenticated ? (
-              <Navigate to="/protected" replace={true} />
-            ) : (
-              <Login />
-            )
-          }
-        />
-        <Route
-          path="/protected"
-          element={
-            isAuthenticated ? (
-              <AdminPanel />
-            ) : (
-              <Navigate to="/login" replace={true} />
-            )
-          }
-        />
-     
-        <Route
-          path="*"
-          element={
-            <Navigate
-              to={isAuthenticated ? "/login" : "/protected"}
-              replace={true}
-              state={{ from: location }}
-            />
-          }
-        /> */}
         <Route path="/" element={<Navigate to="/login" />} />
         <Route
           path="/login"
