@@ -24,7 +24,6 @@ function App() {
   const location = useLocation();
   return (
     <div>
-      <h1>Welcome</h1>
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route

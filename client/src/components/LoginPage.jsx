@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Col, Row, Container } from "react-bootstrap";
 
 const Login = ({ onlogin }) => {
   const navigate = useNavigate();
@@ -70,23 +71,33 @@ const Login = ({ onlogin }) => {
 
   return (
     <>
-      <h1>Login page</h1>
-      <form action="" onSubmit={handleSubmit}>
-        <div>
-          <label>Username</label>
-          <input type="text" value={username} onChange={handleUsernameChange} />
-        </div>
-        <div>
-          <label htmlFor="">Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-        </div>
-        <button type="submit">Submit</button>
-        {loginError && <p>Invalid username or password</p>}
-      </form>
+      <Container>
+        <Row>
+          <Col>
+            <h1>Login page</h1>
+            <form action="" onSubmit={handleSubmit}>
+              <div className="">
+                <label>Username</label>
+                <input
+                  type="text"
+                  value={username}
+                  onChange={handleUsernameChange}
+                />
+              </div>
+              <div>
+                <label htmlFor="">Password</label>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={handlePasswordChange}
+                />
+              </div>
+              <button type="submit">Submit</button>
+              {loginError && <p>Invalid username or password</p>}
+            </form>
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 };

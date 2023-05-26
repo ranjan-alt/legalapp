@@ -16,7 +16,9 @@ const users = [
 
 const login = (req, res) => {
   const { username, password } = req.body;
-  const user = users.find((user) => user.username === username);
+  const user = users.find(
+    (user) => user.username === username && user.password === password
+  );
 
   if (!user) {
     return res.status(400).json({ error: "user not found" });
@@ -32,7 +34,7 @@ const login = (req, res) => {
     const token = jwt.sign(
       { id: user.id, username: user.username },
       secretKey,
-      { expiresIn: "5s" }
+      { expiresIn: "1h" }
     );
 
     res.json({ token });
